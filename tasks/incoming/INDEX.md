@@ -1,6 +1,12 @@
 # Incoming TASK 목록
 
-현재 tasks/incoming/에 등록된 TASK는 아래와 같다.
+현재 tasks/incoming/에 등록된 TASK와 참고 문서는 아래와 같다.
+
+- GU_SOLAR_ENTRY_WORKFLOW.md
+  - TASK_ID: 구솔라 진입 워크플로
+  - 목적: 구솔라가 세션 끊김 후 복귀하거나 새로 합류했을 때 따라야 할 표준 진입 절차
+  - 상태: 우선 확인
+  - 참고: 구솔라가 들어오면 먼저 이 문서를 본다
 
 - check-rdp-firewall-3389-100.98.73.90.md
   - TASK_ID: check-rdp-firewall-3389-100.98.73.90
