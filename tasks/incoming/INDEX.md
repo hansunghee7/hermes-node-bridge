@@ -66,6 +66,14 @@
   - 상태: 참고 문서
   - 참고: 구솔라는 실행 전 이 문서를 먼저 읽는다
 
+- GU_SOLAR_CHECK_SSH_STATUS.md
+  - TASK_ID: 구솔라 SSH 상태 확인 요청
+  - 목적: 구PC SSH 클라이언트/서버 존재 여부와 SSH 필요 방향 확인
+  - 상태: 구솔라 처리 대기
+  - 참고: 신PC는 ssh 클라이언트 존재, sshd 준비 불가 확인
+  - 주의: 신PC→구PC, 구PC→신PC 중 어느 방향이 필요한지, 구PC에 ssh가 있는지 확인
+  - 요청 내용: 구PC ssh 존재 여부, SSH 필요 방향, Tailscale SSH 가능 여부
+
 - SHINPC_BACKLOG_PARALLEL_TASKS.md
   - TASK_ID: 신PC 병행 과제 및 백로그 설계
   - 목적: 신PC가 구PC 쪽 작업만 기다리지 않고 병행 가능한 과제를 정리하고 진행
