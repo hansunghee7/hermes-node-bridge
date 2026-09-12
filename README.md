@@ -104,3 +104,18 @@ git push
 - clone: `git clone https://github.com/hansunghee7/hermes-node-bridge.git`
 - pull: 저장소 복제 후 `git pull`
 - 웹 열람: https://github.com/hansunghee7/hermes-node-bridge
+
+## 구솔라 첫 실행 안내
+
+구솔라는 구PC에서 아래를 수행하면 된다.
+
+```bash
+git clone https://github.com/hansunghee7/hermes-node-bridge.git
+cd hermes-node-bridge
+git pull
+cat tasks/incoming/echo_test.md
+```
+
+이후 echo_test.md의 ACTION을 수행하고, 결과를 tasks/completed/echo_test_result.md와 reports/echo_test.md에 작성한 뒤 푸시한다.
+
+구솔라가 결과를 푸시하려면 구PC의 Hermes Worker 계정에서 이 저장소에 쓸 수 있어야 한다. 현재는 공개 저장소이므로 읽기는 가능하지만, 쓰기는 별도 권한이 필요하다. 필요하면 구솔라를 협업자로 초대한다.
