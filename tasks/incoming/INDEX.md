@@ -77,10 +77,11 @@
 - SHINPC_TELEGRAM_SEND_TEST.md
   - TASK_ID: 신PC 텔레그램 발송 시험
   - 목적: 신PC에서 텔레그램 알림 발송 가능 범위를 시험
-  - 상태: 신PC 진행 준비, 시험 설계 단계
+  - 상태: 신PC 시험 준비 완료, 실제 발송 가능 여부는 미확정
   - 참고: config.yaml hermes-telegram 도구셋 존재, Telegram Desktop 설치 흔적 존재
   - 주의: 민감정보 없이 가능한 범위에서만 시험
   - 병행 항목: 구솔라 텔레그램 수신 가능 여부 확인
+  - 결과: tasks/completed/SHINPC_TELEGRAM_SEND_TEST_RESULT.md
 
 - GU_SOLAR_TELEGRAM_RECEIVE_CHECK.md
   - TASK_ID: 구솔라 텔레그램 수신 가능 여부 확인
