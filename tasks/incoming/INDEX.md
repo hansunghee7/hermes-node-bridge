@@ -96,6 +96,7 @@
   - 참고: 신PC ssh 클라이언트 존재 확인, sshd는 미확인, Add-WindowsCapability 실패
   - 병행 방향: 0순위는 텔레그램 소통 확보, 1순위는 SSH 상호 활용, 그 외는 신PC 즉시 진행 가능 항목
   - SSH 결과: tasks/completed/SHINPC_SSH_TEST_RESULT.md
+  - SSH 방향 확정: 신PC→구PC 우선 검토, 구PC→신PC는 신PC sshd 준비 필요
 
 구솔라는 아래 순서로 처리한다.
 
