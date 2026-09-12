@@ -100,4 +100,7 @@ git push
 
 구솔라는 아래 URL을 사용한다.
 
-TODO: 저장소 생성 후 채움
+- 저장소: https://github.com/hansunghee7/hermes-node-bridge
+- clone: `git clone https://github.com/hansunghee7/hermes-node-bridge.git`
+- pull: 저장소 복제 후 `git pull`
+- 웹 열람: https://github.com/hansunghee7/hermes-node-bridge
