@@ -74,6 +74,21 @@
   - 주의: 신PC→구PC, 구PC→신PC 중 어느 방향이 필요한지, 구PC에 ssh가 있는지 확인
   - 요청 내용: 구PC ssh 존재 여부, SSH 필요 방향, Tailscale SSH 가능 여부
 
+- SHINPC_TELEGRAM_SEND_TEST.md
+  - TASK_ID: 신PC 텔레그램 발송 시험
+  - 목적: 신PC에서 텔레그램 알림 발송 가능 범위를 시험
+  - 상태: 신PC 진행 준비, 시험 설계 단계
+  - 참고: config.yaml hermes-telegram 도구셋 존재, Telegram Desktop 설치 흔적 존재
+  - 주의: 민감정보 없이 가능한 범위에서만 시험
+  - 병행 항목: 구솔라 텔레그램 수신 가능 여부 확인
+
+- GU_SOLAR_TELEGRAM_RECEIVE_CHECK.md
+  - TASK_ID: 구솔라 텔레그램 수신 가능 여부 확인
+  - 목적: 구PC에서 텔레그램 알림 수신 가능 여부를 가능한 범위에서 확인
+  - 상태: 구솔라 처리 대기
+  - 참고: 신PC 텔레그램 발송 시험 준비 중, 구솔라 앱 실행 중 확인됨
+  - 주의: 민감정보 없이 가능한 범위에서만 확인
+
 - SHINPC_BACKLOG_PARALLEL_TASKS.md
   - TASK_ID: 신PC 병행 과제 및 백로그 설계
   - 목적: 신PC가 구PC 쪽 작업만 기다리지 않고 병행 가능한 과제를 정리하고 진행
