@@ -105,6 +105,19 @@ git push
 - pull: 저장소 복제 후 `git pull`
 - 웹 열람: https://github.com/hansunghee7/hermes-node-bridge
 
+## 텔레그램 사용 원칙
+
+텔레그램은 핑만 주고받는 공간으로 쓴다.
+
+- Telegram방은 작업 토론 공간이 아니다
+- 신솔라와 구솔라는 Telegram방에서 계속 말을 주고받지 않는다
+- 작업 내용, 결과, 설명, 논의, 상태 토론은 Telegram에 남기지 않는다
+- 실제 내용은 저장소 문서로만 남긴다
+- 필요할 때만 짧게 핑을 보내 “지금 뭔가 있다”만 알린다
+
+Telegram 알림이 가능하면 TASK 등록/완료 같은 신호만 알린다.
+Telegram이 불가능하면 구솔라가 polling으로 incoming을 확인한다.
+
 ## 구솔라 첫 실행 안내
 
 구솔라는 구PC에서 아래를 수행하면 된다.
