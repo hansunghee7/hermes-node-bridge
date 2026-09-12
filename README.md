@@ -119,3 +119,22 @@ cat tasks/incoming/echo_test.md
 이후 echo_test.md의 ACTION을 수행하고, 결과를 tasks/completed/echo_test_result.md와 reports/echo_test.md에 작성한 뒤 푸시한다.
 
 구솔라가 결과를 푸시하려면 구PC의 Hermes Worker 계정에서 이 저장소에 쓸 수 있어야 한다. 현재는 공개 저장소이므로 읽기는 가능하지만, 쓰기는 별도 권한이 필요하다. 필요하면 구솔라를 협업자로 초대한다.
+
+## 작업 시작/종료 원칙
+
+모든 작업은 말로만 시작하거나 끝내면 안 된다.
+
+- 새 작업은 항상 tasks/incoming/에 문서로 만든다
+- TASK_ID를 반드시 남긴다
+- 목표, 대상, 실행 항목, 성공 기준, 검증 방법을 문서에 남긴다
+- 가능하면 바로 push한다
+
+- 작업 중 상태가 바뀌면 현재 상태, 현재 IP, 다음 행동, 대기 이유를 문서로 남긴다
+- 세션이 닫혀도 다음 실행자가 이어서 할 수 있게 한다
+
+- 완료 시에는 tasks/completed/ 또는 tasks/failed/에 결과 문서를 남긴다
+- reports/에 요약 보고서를 남긴다
+- 커밋과 push까지 마쳐야 완료로 본다
+
+- 종료 전에는 신PC에서 pull하여 문서 상태를 확인한다
+- 문서가 없으면 완료되지 않은 것으로 본다
