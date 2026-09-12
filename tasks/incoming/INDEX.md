@@ -66,6 +66,14 @@
   - 상태: 참고 문서
   - 참고: 구솔라는 실행 전 이 문서를 먼저 읽는다
 
+- SHINPC_BACKLOG_PARALLEL_TASKS.md
+  - TASK_ID: 신PC 병행 과제 및 백로그 설계
+  - 목적: 신PC가 구PC 쪽 작업만 기다리지 않고 병행 가능한 과제를 정리하고 진행
+  - 상태: 신PC 진행 중, SSH 가능 여부 시험은 완료했으나 sshd 준비 불가 확인
+  - 참고: 신PC ssh 클라이언트 존재 확인, sshd는 미확인, Add-WindowsCapability 실패
+  - 병행 방향: 0순위는 텔레그램 소통 확보, 1순위는 SSH 상호 활용, 그 외는 신PC 즉시 진행 가능 항목
+  - SSH 결과: tasks/completed/SHINPC_SSH_TEST_RESULT.md
+
 구솔라는 아래 순서로 처리한다.
 
 1. 가장 위에 있는 미처리 TASK부터 확인한다.
