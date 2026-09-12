@@ -1,0 +1,29 @@
+# TASK: 구PC 인바운드 방화벽 3389 허용 확인
+
+- **TASK_ID**: check-rdp-firewall-3389-100.98.73.90
+- **REQUESTER**: 신솔라
+- **EXECUTOR**: 구솔라
+- **TARGET**: 구PC (DESKTOP-202AP4O, 현재 Tailscale IP 100.98.73.90)
+- **OBJECTIVE**: 구PC에서 3389 인바운드 방화벽 허용 여부를 직접 확인한다
+- **CONTEXT**:
+  - 구솔라는 이미 RDP_recovery_diagnostics_100.98.73.90을 완료했다
+  - 당시 3389 LISTEN, TermService Running, RDP 수신 허용은 확인됐으나 인바운드 방화벽은 미확인이었다
+  - 신PC에서 ping 및 3389 도달은 성공했으나, 실제 RDP 로그인 성공 여부는 아직 미확인이다
+- **ACTION**:
+  - 구PC PowerShell(가능한 경우 관리자 권한)에서 아래를 확인한다
+    - Get-NetFirewallRule -DisplayName '*Remote Desktop*' 관련 규칙 목록
+    - 각 규칙의 Enabled, Action, Direction, Protocol, LocalPort, Profile 확인
+    - 특히 TCP 3389 인바운드 Allow 규칙이 존재하는지 확인
+    - 가능하면 NetFirewallRule 목록에서 Remote Desktop 관련 항목을 정리해서 남긴다
+  - 관리자 권한이 없어서 확인이 어려우면, 시도한 명령과 실패 이유를 그대로 남긴다
+- **SUCCESS_CRITERIA**:
+  - 구PC에서 3389 인바운드 방화벽 허용/차단 상태를 실제로 확인했거나, 확인 불가 사유와 시도한 명령을 남긴다
+- **VERIFICATION**:
+  - 구솔라가 결과를 tasks/completed/ 또는 tasks/failed/에 남긴다
+  - 신솔라는 그 결과를 pull하여 독립적으로 읽는다
+- **ALLOWED_SCOPE**:
+  - 구PC에서 방화벽/ TermService/ Tailscale 상태 확인 및 보고
+- **FORBIDDEN_SCOPE**:
+  - RDP 자체를 함부로 끄거나 설정하지 않는다
+  - Tailscale 재발 방지 범위를 넘는 시스템 변경은 하지 않는다
+  - 현재 문제와 무관한 최적화/삭제는 하지 않는다

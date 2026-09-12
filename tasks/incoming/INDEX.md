@@ -2,6 +2,12 @@
 
 현재 tasks/incoming/에 등록된 TASK는 아래와 같다.
 
+- check-rdp-firewall-3389-100.98.73.90.md
+  - TASK_ID: check-rdp-firewall-3389-100.98.73.90
+  - 목적: 구PC 인바운드 방화벽 3389 허용 여부 직접 확인
+  - 상태: 구솔라 처리 대기
+  - 참고: 구솔라가 이미 RDP_recovery_diagnostics_100.98.73.90에서 미확인으로 남긴 항목
+
 - GU_SOLAR_RECOVERY_BRIEF.md
   - TASK_ID: 구솔라 복귀 지시서
   - 목적: 구솔라가 파워쉘 재실행 후 빠르게 업무를 재개하도록 안내
@@ -11,8 +17,8 @@
 - RDP_recovery_diagnostics_100.98.73.90.md
   - TASK_ID: RDP_recovery_diagnostics_100.98.73.90
   - 목적: 구PC Tailscale 상태와 RDP 관련 상태를 직접 확인하여 신PC→100.98.73.90 RDP 실패 원인 특정
-  - 상태: 구솔라 처리 대기
-  - 참고: 즉시 처리 대상, 구PC에서 직접 확인한 결과 필요
+  - 상태: 구솔라 완료, 신솔라 검증 중
+  - 참고: 구솔라 결과 및 보고 완료, 신PC에서 독립 검증 진행 중
 
 - echo_test.md
   - TASK_ID: echo_test
