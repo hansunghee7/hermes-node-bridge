@@ -2,6 +2,12 @@
 
 현재 tasks/incoming/에 등록된 TASK는 아래와 같다.
 
+- GU_SOLAR_RECOVERY_BRIEF.md
+  - TASK_ID: 구솔라 복귀 지시서
+  - 목적: 구솔라가 파워쉘 재실행 후 빠르게 업무를 재개하도록 안내
+  - 상태: 우선 확인
+  - 참고: 구솔라는 복귀 즉시 이 문서를 먼저 읽는다
+
 - RDP_recovery_diagnostics_100.98.73.90.md
   - TASK_ID: RDP_recovery_diagnostics_100.98.73.90
   - 목적: 구PC Tailscale 상태와 RDP 관련 상태를 직접 확인하여 신PC→100.98.73.90 RDP 실패 원인 특정
