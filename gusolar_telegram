@@ -2,22 +2,15 @@
 
 구솔라의 Hermes Telegram 연동을 실제 정상 상태로 복구하라.
 
-현재까지 확인된 신솔라 상태:
 
 * Hermes Gateway 실행 중
-* Telegram polling mode 연결 로그 존재
-* `Connected to Telegram (polling mode)`
-* `set_my_commands OK`
-* 그러나 동일 Bot Token으로 직접 Telegram Bot API `getMe/sendMessage` 호출 시 `404 Not Found`
-* 따라서 현재 가장 유력한 원인은 Bot Token 자체가 잘못되었거나, 실행 중인 Hermes가 기대한 토큰과 실제 Telegram Bot Token이 불일치하는 문제다.
+* Telegram  전송 로그 존재
+* 2026.09.13 AM 01:48 hello-test
 
 이번 작업은 "진단 보고서 작성"이 목적이 아니다.
 **원인을 특정하고, 필요한 최소 수정 후 실제 Telegram 송수신까지 성공시키는 것이 목적이다.**
 
 원칙:
-
-* 토큰의 실제 값은 절대 출력하지 마라.
-* 토큰을 로그에 남기지 마라.
 * 기존 설정을 무조건 초기화하거나 재설치하지 마라.
 * 원인을 확인하면 가장 작은 변경으로 바로 수정하라.
 * 성공 기준은 설정 존재가 아니라 실제 Telegram 메시지 송수신이다.
@@ -30,7 +23,6 @@
 [1. 구솔라의 실제 Hermes 실행 상태 확인]
 
 확인:
-
 * 현재 실행 중인 Hermes Gateway PID
 * 실행 파일 경로
 * 현재 실행 중인 Hermes와 설치 경로가 동일한지
@@ -49,13 +41,14 @@
 * config.yaml의 Telegram 설정
 * .env와 config.yaml 중 어느 설정이 우선 적용되는지
 
-중요:
-토큰은 절대 출력하지 말고 다음처럼 보고하라.
 
-`Token 존재: YES`
-`Token 길이: XX`
-`Token prefix: 8835538131:***`
-등 필요한 경우에도 마지막 부분은 반드시 마스킹한다.
+구솔라 텔레그램 정보
+name : GooSolar_650_bot
+bot_token: 8653661602:AAGrYCHcnPMXpsilygnO4GXnouNeyE6H6Wg
+
+연결할 사장님 ID
+8609932977
+
 
 [3. Bot Token 실제 유효성 확인]
 
@@ -69,35 +62,11 @@
 실패한다면:
 
 * HTTP status
-* Telegram API error description
-  만 보고하라.
-  토큰 자체는 절대 보고하지 마라.
+* Telegram API error description 보고하라.
 
-여기서 반드시 판정하라.
-
-A. 토큰 자체가 유효하지 않음
-B. 토큰은 유효하지만 Hermes가 다른 토큰을 사용함
-C. 토큰은 유효하지만 Hermes 설정/인증 과정에 문제가 있음
-
-[4. 구솔라와 신솔라의 Bot Token 관계 확인]
-
-현재 신솔라 보고에서 동일한 Bot Token 형식이 발견되었다.
-
-구솔라에서도 현재 적용 중인 토큰이 신솔라와 같은 Bot인지 확인하라.
-
-단, 토큰 전체를 비교하거나 출력하지 마라.
 
 안전한 비교 방식:
 
-* Bot ID(prefix 숫자 부분) 비교
-* 해시 또는 fingerprint 비교
-* 마지막 4자리 등 최소 식별값
-
-결과:
-
-* 동일 Bot
-* 서로 다른 Bot
-  중 하나로 판정한다.
 
 [5. 동일 Bot 동시 사용 여부 확인]
 
