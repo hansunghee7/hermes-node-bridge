@@ -1,174 +1,88 @@
-목표:
+구솔라 텔레그램 연동 확인 지시문
 
-구솔라의 Hermes Telegram 연동을 실제 정상 상태로 복구하라.
+아래 순서대로 확인하고 결과를 알려주세요. 하나씩 해도 되고, 한 번에 하셔도 됩니다.
 
+1. Hermes 설치 경로 확인
 
-* Hermes Gateway 실행 중
-* Telegram  전송 로그 존재
-* 2026.09.13 AM 01:48 hello-test
+- Hermes가 설치된 전체 폴더 경로를 알려주세요.
+- config.yaml 파일 전체 경로도 함께 알려주세요.
+- 구PC의 사용자 계정 이름(폴더명에 들어가는 부분)도 알려주세요.
 
-이번 작업은 "진단 보고서 작성"이 목적이 아니다.
-**원인을 특정하고, 필요한 최소 수정 후 실제 Telegram 송수신까지 성공시키는 것이 목적이다.**
+예상 경로:
+- C:\Users\<사용자명>\AppData\Local\hermes\config.yaml
+- 또는 다른 폴더에 설치했을 수 있어요.
 
-원칙:
-* 기존 설정을 무조건 초기화하거나 재설치하지 마라.
-* 원인을 확인하면 가장 작은 변경으로 바로 수정하라.
-* 성공 기준은 설정 존재가 아니라 실제 Telegram 메시지 송수신이다.
-* 같은 Bot Token을 신솔라와 구솔라가 동시에 사용하는 경우 충돌 가능성까지 확인하라.
-* 신솔라 설정은 함부로 변경하지 마라.
-* 다른 PC의 설정을 추측하지 말고 구솔라의 실제 상태를 기준으로 판단하라.
+2. config.yaml에서 텔레그램 관련 내용 확인
 
-다음 순서로 수행하라.
+config.yaml을 열어서 텔레그램(telegram) 섹션만 찾아서 보여주세요.
 
-[1. 구솔라의 실제 Hermes 실행 상태 확인]
+반드시 다음을 확인해 주세요:
+- bot_token이 있는지
+- enabled: true 같은 활성화 설정이 있는지
+- allowed_users가 있는지, 있다면 어떤 ID가 들어 있는지
+- admin_users가 있는지
 
-확인:
-* 현재 실행 중인 Hermes Gateway PID
-* 실행 파일 경로
-* 현재 실행 중인 Hermes와 설치 경로가 동일한지
-* Gateway가 실제 사용하는 config 파일 위치
-* 현재 적용되는 `.env` 위치
+⚠️ 중요: bot_token은 전체를 보여주지 말고 앞부분 일부만 보여주세요.
+예시:
+- 8896539486:***
+- 또는 1234567890:AAH...
 
-중복 Gateway가 있다면 가장 먼저 식별하라.
+allowed_users에 성희님 텔레그램 ID 8609932977이 들어 있는지도 꼭 확인해 주세요.
 
-[2. 구솔라에서 실제 사용 중인 Telegram 설정 확인]
+3. 게이트웨이 실행 상태 확인
 
-다음만 확인한다.
-
-* Telegram 설정 존재 여부
-* `TELEGRAM_BOT_TOKEN` 존재 여부
-* `TELEGRAM_ALLOWED_USERS` 존재 여부
-* config.yaml의 Telegram 설정
-* .env와 config.yaml 중 어느 설정이 우선 적용되는지
+터미널(파워쉘)에서 아래 명령어를 실행해 결과를 보여주세요.
 
 
-구솔라 텔레그램 정보
-name : GooSolar_650_bot
-bot_token: 8653661602:AAGrYCHcnPMXpsilygnO4GXnouNeyE6H6Wg
-
-연결할 사장님 ID
-8609932977
+PowerShell
+hermes gateway status
 
 
-[3. Bot Token 실제 유효성 확인]
+실행 후 보이는 메시지 전체를 그대로 보여주시면 됩니다.
+경과나 에러 메시지도 있으면 함께 알려주세요.
 
-현재 구솔라 Hermes가 실제 사용하는 토큰으로 Telegram Bot API의 `getMe`를 테스트하라.
+4. 게이트웨이 로그 확인
 
-성공 기준:
+아래 로그 파일에 텔레그램 연결 관련 내용이 있는지 확인하고, 최근 부분을 보여주세요.
 
-* HTTP 200
-* Telegram API `ok=true`
+- C:\Users\<사용자명>\AppData\Local\hermes\logs\gateway.log
+- 또는 C:\Users\<사용자명>\AppData\Local\hermes\logs\gateway-stdio.log
 
-실패한다면:
+로그를 볼 때 다음 키워드가 있는지 봐주세요:
+- Telegram
+- connected
+- polling
+- healthy
 
-* HTTP status
-* Telegram API error description 보고하라.
+로그가 너무 길면 최근 20~30줄 정도까지만 보여주셔도 됩니다.
+
+5. 텔레그램 연결 실제 확인
+
+가능하다면 텔레그램에서 구솔라에게 말을 걸어보고, 실제로 답장이 오는지 확인해 주세요.
+이 부분은 꼭 하지 않아도 되고, 되면 된다고만 알려주시면 됩니다.
+
+---
+
+🔒 보안 주의사항 (반드시 지켜주세요)
+
+- bot_token 전체는 절대 보여주지 마세요.
+- 채팅 ID 전체도 가급적 일부만 보여주세요.
+- config.yaml 전체를 그대로 복사해서 보내지 말고, 텔레그램 관련 부분만 보여주세요.
+
+---
+
+결과 알려주실 형식 (예시)
+
+아래처럼 간단히 적어주셔도 충분해요.
 
 
-안전한 비교 방식:
-
-
-[5. 동일 Bot 동시 사용 여부 확인]
-
-Telegram polling 방식에서는 동일 Bot을 여러 실행환경에서 동시에 사용하는 것이 문제가 될 수 있으므로 다음을 확인하라.
-
-* 구솔라 Gateway가 polling 중인지
-* 신솔라 Gateway가 polling 중인지
-* 같은 Bot을 두 PC에서 동시에 polling 중인지
-* webhook이 설정되어 있는지
-
-가능하면 Telegram API의 `getWebhookInfo`를 사용해 확인하라.
-
-결과를 다음 중 하나로 판정:
-
-A. 구솔라만 polling
-B. 신솔라만 polling
-C. 두 PC가 같은 Bot으로 polling
-D. webhook이 활성화되어 있음
-E. 충돌 없음
-
-[6. 현재 Telegram 실제 수신/발신 테스트]
-
-토큰 상태가 정상이라면 실제 검증을 수행하라.
-
-가능하면 Telegram에서 허용된 사용자에게 테스트 메시지를 보내고:
-
-Telegram
-→ Hermes Gateway
-→ allowlist
-→ Agent
-
-경로로 실제 메시지가 들어오는지 확인한다.
-
-그 다음 Hermes가 실제 Telegram으로 응답을 보내는지 확인한다.
-
-성공 기준:
-
-`Inbound: PASS`
-`Outbound: PASS`
-
-단순히 `Connected to Telegram` 로그가 있다고 성공으로 판정하지 마라.
-
-[7. 원인 확정]
-
-최종적으로 다음 중 하나로 원인을 확정하라.
-
-1. Bot Token 오류
-2. 잘못된 config가 적용되고 있음
-3. 구솔라/신솔라가 동일 Bot을 동시에 사용
-4. webhook/polling 충돌
-5. allowlist 문제
-6. Hermes Telegram 설정 문제
-7. 기타 — 구체적인 근거를 제시
-
-"가능성이 있다" 수준의 원인 여러 개를 나열하지 말고,
-확인 가능한 경우 가장 직접적인 원인을 하나로 좁혀라.
-
-[8. 즉시 복구]
-
-원인이 확인되면 다음 원칙으로 수정하라.
-
-* 최소 변경
-* 기존 설정 백업
-* 필요한 설정만 수정
-* Gateway 재시작
-* 실제 Telegram 송수신 검증
-
-특히 Bot Token이 잘못된 경우:
-
-* 새로운 토큰을 자동으로 생성하려고 하지 마라.
-* 사람이 BotFather에서 새 토큰을 발급해야 하는 경우 그 사실을 정확히 보고하라.
-* 토큰 입력이 필요하면 정확한 입력 위치만 안내하라.
-
-[9. 최종 보고]
-
-다음 형식으로만 보고하라.
-
-[핵심 원인]
-한 문장.
-
-[확인 결과]
-
-* Bot Token 유효성: PASS/FAIL
-* Hermes 적용 Token: 정상/불일치/미확인
-* 구솔라↔신솔라 동일 Bot 사용: YES/NO
-* polling/webhook 충돌: YES/NO
-* allowlist: PASS/FAIL
-
-[수정]
-실제로 변경한 내용.
-
-[실제 검증]
-
-* Telegram → Hermes: PASS/FAIL
-* Hermes → Telegram: PASS/FAIL
-
-[최종 상태]
-정상 / 비정상
-
-비정상인 경우:
-다음에 사람이 해야 할 작업을 1~2개만 적어라.
-
-중요:
-이번 작업의 완료 조건은 "Telegram 연결 로그 확인"이 아니다.
-**실제로 Telegram 메시지를 수신하고 Hermes가 응답하는 것까지 성공해야 완료다.**
+1. Hermes 경로: C:\Users\xxx\AppData\Local\hermes
+2. config.yaml 텔레그램 섹션:
+   - bot_token: 8896539486:***
+   - enabled: true (또는 없음)
+   - allowed_users: [8609932977] (또는 없음)
+3. hermes gateway status 결과:
+   (실행 결과 그대로)
+4. 게이트웨이 로그 최근 일부:
+   (로그 일부 그대로)
+5. 텔레그램 실제 반응: 됨 / 안 됨
